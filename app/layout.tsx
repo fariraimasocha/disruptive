@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter, Playfair_Display } from 'next/font/google'
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner"
+import Providers from "@/components/providers"
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { cn } from "@/lib/utils";
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif'
+})
+
 
 export const metadata: Metadata = {
   title: "disruptive",
@@ -25,12 +25,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          'flex min-h-screen flex-col font-sans antialiased',
+          inter.variable,
+          playfair.variable
+        )}
       >
-        {children}
-        <Toaster />
+        <Providers>
+          <Header />
+          <main className="grow">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );
