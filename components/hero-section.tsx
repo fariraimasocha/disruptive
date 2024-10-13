@@ -20,13 +20,13 @@ export default function Component() {
                     </p>
                     <div className="mt-6 flex items-center justify-center gap-x-4">
                         <Button asChild size="lg" className="group">
-                            <Link href="/contribute">
+                            <Link href="https://github.com/fariraimasocha/disruptive">
                                 Start Contributing
                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
                         <Button asChild variant="outline" size="lg">
-                            <Link href="/learn-more">Learn More</Link>
+                            <Link href="https://github.com/fariraimasocha/disruptive">Learn More</Link>
                         </Button>
                     </div>
                 </div>
